@@ -1,7 +1,7 @@
 streamlit
 
 # LangChain + OpenAI
-langchain
+langchain==0.2.14
 langchain-community
 langchain-openai
 langchain-core

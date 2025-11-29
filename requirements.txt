@@ -1,12 +1,15 @@
 streamlit
+
+# LangChain + OpenAI
 langchain
-streamlit
-langchain
-langchain-openai
 langchain-community
+langchain-openai
 langchain-core
 openai
+
+# Vector store
 faiss-cpu
+
+# Env + PDF
 python-dotenv
 pypdf
-

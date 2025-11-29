@@ -1,0 +1,20 @@
+cat > .gitignore
+.env
+*.env
+
+env/
+venv/
+env311/
+.venv/
+
+__pycache__/
+*.py[cod]
+
+vectorstore_faiss/
+
+*.ipynb
+.ipynb_checkpoints/
+
+.DS_Store
+.vscode/
+.idea/

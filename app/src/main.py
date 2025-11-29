@@ -2,6 +2,18 @@ import os
 import streamlit as st
 from dotenv import load_dotenv
 
+# 1️⃣ Local: load from .env
+load_dotenv()
+
+# 2️⃣ Cloud: override with Streamlit secrets if present
+api_key = os.getenv("OPENAI_API_KEY")
+if "OPENAI_API_KEY" in st.secrets:
+    api_key = st.secrets["OPENAI_API_KEY"]
+
+if api_key:
+    os.environ["OPENAI_API_KEY"] = api_key
+# (don't raise here; let data_extraction_llms raise if still missing)
+
 from data_extraction_llms import (
     PyPDFLoader,
     RecursiveCharacterTextSplitter,

@@ -8,7 +8,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
-# Load .env from project root (assuming you run from /rag_llms)
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -23,7 +22,6 @@ def get_llm():
     )
 
 def get_embedding_function():
-    # You can also omit api_key=... and just rely on env
     return OpenAIEmbeddings(
         model="text-embedding-ada-002",
         api_key=OPENAI_API_KEY,
@@ -63,7 +61,6 @@ def load_vectorstore_faiss(vectorstore_path, embedding_function):
         allow_dangerous_deserialization=True,
     )
 
-# 🔹 HERE is the new function you were missing
 def build_rag_chain(retriever):
     """
     Build a simple RAG chain: retriever -> prompt -> ChatOpenAI.
@@ -89,9 +86,7 @@ Answer in 3–6 short sentences, in simple English.
     def format_docs(docs):
         return "\n\n".join(d.page_content for d in docs)
 
-    # Runnable pipeline:
-    #   input question -> {"context": retrieved_docs, "question": question}
-    #   -> prompt -> llm
+   
     rag_chain = (
         {
             "context": retriever | format_docs,
